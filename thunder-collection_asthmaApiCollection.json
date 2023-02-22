@@ -1,0 +1,40 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "asthmaApiCollection",
+    "dateExported": "2023-02-22T18:53:49.459Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "74d42e18-f40d-46b9-931e-39a2333055f5",
+            "colId": "83e08ae8-e96f-4509-810e-eaaac1ff10fe",
+            "containerId": "",
+            "name": "getStage",
+            "url": "",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-02-22T18:52:39.945Z",
+            "modified": "2023-02-22T18:52:39.945Z",
+            "headers": []
+        },
+        {
+            "_id": "d2cdc031-f022-4125-9086-80f1f4a30191",
+            "colId": "83e08ae8-e96f-4509-810e-eaaac1ff10fe",
+            "containerId": "",
+            "name": "getPlot",
+            "url": "http://127.0.0.1:5000/plot",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-02-22T18:53:18.419Z",
+            "modified": "2023-02-22T18:53:41.831Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n\"plot\":[[10,20,30,50],[20,30,50,40],[15,10,13,16],[14,15,16,13]]\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
