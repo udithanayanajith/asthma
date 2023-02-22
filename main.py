@@ -18,6 +18,7 @@ def stage():
     num2 = stageData[1]
     num3 = stageData[2]
     num4 = stageData[3]
+    print(num1," ",num2," ",num3," ",num4)
     result = asthmaStage.predictData(num1, num2, num3, num4)
     print("Prediction is", result)
     return {"stage": int(result)}

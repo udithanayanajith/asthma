@@ -1,86 +1,90 @@
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score
+# import pandas as pd
+# from sklearn.model_selection import train_test_split
+# from sklearn.ensemble import RandomForestClassifier
+# from sklearn.metrics import accuracy_score
 import warnings
 import pickle
-import os
+# import os
 
 
 MODEL_FILE = "asthmaModel.pkl"
 
-      
+
 warnings.filterwarnings("ignore")
-def predictData(num1,num2,num3,num4):
-    
+
+
+def predictData(num1, num2, num3, num4):
+
     # print(num1,num2,num3,num4)
-   
-    if os.path.exists(MODEL_FILE):
-        
-         with open(MODEL_FILE, "rb") as f:
-                model = pickle.load(f)
-                # Get user inputs
-                inputs = [num1,num2,num3,num4]
-                prediction = model.predict([inputs])[0]
 
-                #Genarate Accurecy 
-                data = pd.read_csv('asthmaData.csv')
+    # if os.path.exists(MODEL_FILE):
 
-                X = data.drop('stage', axis=1)
-                y = data['stage']
+        with open(MODEL_FILE, "rb") as f:
+            model = pickle.load(f)
+            # Get user inputs
+            inputs = [num1, num2, num3, num4]
+            prediction = model.predict([inputs])[0]
 
-                # Split the data into training and testing sets
-                X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+            # Genarate Accurecy
+            # data = pd.read_csv('asthmaData.csv')
 
-                # Create the Random Forest Classifier model
-                model = RandomForestClassifier(n_estimators=100)
+            # X = data.drop('stage', axis=1)
+            # y = data['stage']
 
-                # Train the model using the training data
-                model.fit(X_train, y_train)
+            # # Split the data into training and testing sets
+            # X_train, X_test, y_train, y_test = train_test_split(
+            #     X, y, test_size=0.2, random_state=42)
 
-                # Make predictions using the testing data
-                y_pred = model.predict(X_test)
+            # # Create the Random Forest Classifier model
+            # model = RandomForestClassifier(n_estimators=100)
 
-                # Calculate the accuracy of the model
-                accuracy = accuracy_score(y_test, y_pred)
-                print("Accurecy:", accuracy)
-                # Output the prediction
-                # print("Asthma Stage:", prediction)
-                
-                return prediction
-    
-    else:
+            # # Train the model using the training data
+            # model.fit(X_train, y_train)
 
-        # Load the data into a Pandas DataFrame
-        data = pd.read_csv('asthmaData.csv')
+            # # Make predictions using the testing data
+            # y_pred = model.predict(X_test)
 
-        X = data.drop('stage', axis=1)
-        y = data['stage']
+            # # Calculate the accuracy of the model
+            # accuracy = accuracy_score(y_test, y_pred)
+            # print("Accurecy:", accuracy)
+            # Output the prediction
+            # print("Asthma Stage:", prediction)
 
-        # Split the data into training and testing sets
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+            return prediction
 
-        # Create the Random Forest Classifier model
-        model = RandomForestClassifier(n_estimators=100)
+    # else:
 
-        # Train the model using the training data
-        model.fit(X_train, y_train)
+    #     # Load the data into a Pandas DataFrame
+    #     data = pd.read_csv('asthmaData.csv')
 
-        # Make predictions using the testing data
-        y_pred = model.predict(X_test)
+    #     X = data.drop('stage', axis=1)
+    #     y = data['stage']
 
-        # Calculate the accuracy of the model
-        accuracy = accuracy_score(y_test, y_pred)
+    #     # Split the data into training and testing sets
+    #     X_train, X_test, y_train, y_test = train_test_split(
+    #         X, y, test_size=0.2, random_state=42)
 
-        print("Accuracy:", accuracy)
+    #     # Create the Random Forest Classifier model
+    #     model = RandomForestClassifier(n_estimators=100)
 
-        pickle.dump(model,open('asthmaModel.pkl','wb'))
-        
-        # Get user inputs
-        inputs = [num1,num2,num3,num4]
-        prediction = model.predict([inputs])[0]
+    #     # Train the model using the training data
+    #     model.fit(X_train, y_train)
 
-        # Output the prediction
-        # print("Asthma Stage:", prediction)
-        
-        return prediction  
+    #     # Make predictions using the testing data
+    #     y_pred = model.predict(X_test)
+
+    #     # Calculate the accuracy of the model
+    #     # accuracy = accuracy_score(y_test, y_pred)
+
+    #     # print("Accuracy:", accuracy)
+
+    #     pickle.dump(model, open('asthmaModel.pkl', 'wb'))
+
+    #     # Get user inputs
+    #     inputs = [num1, num2, num3, num4]
+    #     prediction = model.predict([inputs])[0]
+
+    #     # Output the prediction
+    #     # print("Asthma Stage:", prediction)
+
+    #     return prediction
